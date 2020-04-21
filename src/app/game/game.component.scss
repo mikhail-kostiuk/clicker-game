@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-image: url(../../assets/images/space.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.greatings {
+  display: block;
+  margin-top: 60px;
+  color: #fff;
+  font-family: "Orbitron", sans-serif;
+  font-size: 96px;
+  font-weight: 700;
+}
+
+.username {
+  color: #ebc96c;
+}
+
+.result {
+  margin-top: 80px;
+  color: #fff;
+  font-size: 64px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.accent {
+  color: #f44336;
+}
+
+.button {
+  margin-top: 80px;
+  width: 260px;
+  height: 100px;
+  border: none;
+  background-color: #f44336;
+  color: #fff;
+  font-size: 24px;
+  text-transform: uppercase;
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.timer {
+  margin-top: 80px;
+  color: #6cd1eb;
+  font-size: 96px;
+  font-family: "Oxanium", cursive;
+}

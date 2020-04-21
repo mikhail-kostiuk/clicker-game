@@ -1,0 +1,14 @@
+<div class="container">
+  <span class="greatings"
+    >Hello, <span class="username">stranger</span>. What is your name?</span
+  >
+  <form class="form" (submit)="onSubmit($event)">
+    <input
+      class="input"
+      type="text"
+      name="username"
+      (change)="onChange($event.target.value)"
+    />
+    <button class="button" type="submit">Continue</button>
+  </form>
+</div>

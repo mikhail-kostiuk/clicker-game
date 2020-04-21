@@ -1,0 +1,20 @@
+<div class="container">
+  <span class="greatings">Try yourself!</span>
+  <span class="result" *ngIf="state === 'FINISHED'"
+    ><span class="username">{{ username }}</span
+    >, you clicked <span class="accent">{{ clicks }}</span> times!</span
+  >
+  <span class="result" *ngIf="state === 'RUNNING'"
+    >Clicks: <span class="accent">{{ clicks }}</span></span
+  >
+  <button class="button" *ngIf="state === 'READY'" (click)="startGame()">
+    Start Game
+  </button>
+  <button class="button" *ngIf="state === 'RUNNING'" (click)="click()">
+    Click!
+  </button>
+  <button class="button" *ngIf="state === 'FINISHED'" (click)="newGame()">
+    Start new game
+  </button>
+  <span class="timer">00:00:{{ time }}</span>
+</div>
