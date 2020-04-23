@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,20 +7,19 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
-  username: string;
+export class HomeComponent {
+  userForm: FormGroup;
 
-  constructor(private router: Router) {}
-
-  ngOnInit(): void {}
-
-  onChange(value) {
-    this.username = value;
+  constructor(private router: Router, private formBuilder: FormBuilder) {
+    this.userForm = this.formBuilder.group({
+      username: '',
+    });
   }
 
-  onSubmit(event: CustomEvent): void {
-    event.preventDefault();
-    localStorage.setItem('username', JSON.stringify(this.username));
+  onSubmit(userData): void {
+    const { username } = userData;
+
+    localStorage.setItem('username', JSON.stringify(username));
     this.router.navigate(['/game']);
   }
 }

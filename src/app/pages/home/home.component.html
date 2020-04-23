@@ -2,13 +2,12 @@
   <span class="greatings"
     >Hello, <span class="username">stranger</span>. What is your name?</span
   >
-  <form class="form" (submit)="onSubmit($event)">
-    <input
-      class="input"
-      type="text"
-      name="username"
-      (change)="onChange($event.target.value)"
-    />
+  <form
+    class="form"
+    [formGroup]="userForm"
+    (ngSubmit)="onSubmit(userForm.value)"
+  >
+    <input class="input" type="text" formControlName="username" />
     <button class="button" type="submit">Continue</button>
   </form>
 </div>
