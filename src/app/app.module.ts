@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { GameComponent } from './pages/game/game.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ResultComponent } from './pages/result/result.component';
 
 @NgModule({
-  declarations: [AppComponent, GameComponent, HomeComponent],
+  declarations: [AppComponent, GameComponent, HomeComponent, ResultComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
