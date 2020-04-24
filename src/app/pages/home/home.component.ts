@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { UserService } from '../../shared/services/user.service';
+import { User } from '../../shared/models/user.model';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,16 +13,19 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   userForm: FormGroup;
 
-  constructor(private router: Router, private formBuilder: FormBuilder) {
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private userService: UserService
+  ) {
     this.userForm = this.formBuilder.group({
-      username: '',
+      name: '',
     });
   }
 
   onSubmit(userData): void {
-    const { username } = userData;
-
-    localStorage.setItem('username', JSON.stringify(username));
+    const user: User = new User(userData);
+    this.userService.setUser(user);
     this.router.navigate(['/game']);
   }
 }
