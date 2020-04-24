@@ -8,22 +8,22 @@ export class TimerService {
   initialTime: number = 0;
   currentTime: number = 0;
   timerId: any;
-  private timeSubject = new Subject<number>();
-  timeChange$ = this.timeSubject.asObservable();
+  private timeSource = new Subject<number>();
+  timeChange$ = this.timeSource.asObservable();
 
   constructor() {}
 
-  changeTime(time: number) {
-    this.timeSubject.next(time);
+  timeChanged(time: number) {
+    this.timeSource.next(time);
   }
 
   startTimer(): any {
     this.timerId = setInterval(() => {
       if (this.currentTime > 0) {
         this.currentTime--;
-        this.changeTime(this.currentTime);
+        this.timeChanged(this.currentTime);
       } else {
-        this.changeTime(0);
+        this.timeChanged(0);
         this.stopTimer();
       }
     }, 1000);
