@@ -20,13 +20,14 @@ export class TimerService {
   startTimer(): any {
     this.timerId = setInterval(() => {
       if (this.currentTime > 0) {
-        this.currentTime--;
+        console.log(this.currentTime);
+        this.currentTime -= 0.1;
         this.timeChanged(this.currentTime);
       } else {
         this.timeChanged(0);
         this.stopTimer();
       }
-    }, 1000);
+    }, 100);
   }
 
   pauseTimer(): void {

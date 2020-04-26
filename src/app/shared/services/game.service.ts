@@ -10,12 +10,18 @@ export class GameService {
   time: number = 10;
   private stateSource = new Subject<string>();
   stateChange$ = this.stateSource.asObservable();
+  private clicksSource = new Subject<number>();
+  clicksChange$ = this.clicksSource.asObservable();
 
   constructor() {}
 
   statusChanged(state: string) {
     this.stateSource.next(state);
     this.state = state;
+  }
+
+  clicksChanged(clicks: number) {
+    this.clicksSource.next(clicks);
   }
 
   newGame() {
@@ -37,6 +43,7 @@ export class GameService {
 
   click() {
     this.clicks++;
+    this.clicksChanged(this.clicks);
   }
 
   getState() {

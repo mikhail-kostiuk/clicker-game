@@ -1,50 +1,52 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-}
+@import "variables";
 
-.greatings {
-  display: block;
-  margin-top: 60px;
-  color: #fff;
-  font-family: "Orbitron", sans-serif;
-  font-size: 96px;
-  font-weight: 700;
-}
-
-.username {
-  color: #ebc96c;
-}
-
-.result {
-  margin-top: 80px;
-  color: #fff;
+.progress {
+  color: $color-primary;
   font-size: 64px;
-  font-family: "Ubuntu", sans-serif;
+  font-family: $ff-text-primary;
 }
 
 .accent {
-  color: #f44336;
+  color: $color-accent;
+  font-family: $ff-numbers-primary;
 }
 
-.button {
+%button {
   margin-top: 80px;
   width: 260px;
   height: 100px;
   border: none;
-  background-color: #f44336;
-  color: #fff;
+  color: $color-primary;
+  font-family: $ff-text-primary;
   font-size: 24px;
   text-transform: uppercase;
-  font-family: "Ubuntu", sans-serif;
   letter-spacing: 0.5px;
+}
+.button--active {
+  @extend %button;
+  background-color: $color-button-danger;
+}
+.button--not-active {
+  @extend %button;
+  text-decoration-line: line-through;
+  background-color: $color-button-disabled;
+}
+
+.controls {
+  margin-top: 100px;
+
+  & .button {
+    margin-left: 40px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
 }
 
 .timer {
   margin-top: 80px;
-  color: #6cd1eb;
+  color: $color-secondary;
+  font-family: $ff-numbers-primary;
   font-size: 96px;
-  font-family: "Oxanium", cursive;
 }

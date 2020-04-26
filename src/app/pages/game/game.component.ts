@@ -32,7 +32,10 @@ export class GameComponent implements OnInit, OnDestroy {
         this.gameService.endGame();
       }
     });
-    this.subscriptions.push(gameStateSub, timerTimeSub);
+    const gameClicksSub = gameService.clicksChange$.subscribe((clicks) => {
+      this.clicks = clicks;
+    });
+    this.subscriptions.push(gameStateSub, timerTimeSub, gameClicksSub);
   }
 
   ngOnInit(): void {
@@ -52,7 +55,6 @@ export class GameComponent implements OnInit, OnDestroy {
     this.timerService.setInitialTime(this.time);
     this.timerService.resetTimer();
     this.timerService.startTimer();
-    console.log(this.state);
   }
 
   pauseGame() {
@@ -65,8 +67,12 @@ export class GameComponent implements OnInit, OnDestroy {
     this.timerService.startTimer();
   }
 
+  endGame() {
+    this.gameService.endGame();
+    this.timerService.stopTimer();
+  }
+
   onClick() {
     this.gameService.click();
-    this.clicks = this.gameService.getClicks();
   }
 }

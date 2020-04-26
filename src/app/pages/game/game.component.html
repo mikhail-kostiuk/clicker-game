@@ -1,20 +1,34 @@
 <div class="container">
-  <span class="greatings">Try yourself!</span>
-  <span class="result"
+  <span class="heading">Try yourself!</span>
+  <span class="progress"
     >Clicks: <span class="accent">{{ clicks }}</span></span
   >
-  <button *ngIf="state === 'RUNNING'" class="button" (click)="onClick()">
+  <button
+    *ngIf="state === 'RUNNING'; else disabled"
+    class="button--active"
+    (click)="onClick()"
+  >
     Click!
   </button>
-  <button *ngIf="state === 'READY'" class="button" (click)="startGame()">
-    Start game
-  </button>
-  <button *ngIf="state === 'RUNNING'" class="button" (click)="pauseGame()">
-    Pause game
-  </button>
-  <button *ngIf="state === 'PAUSED'" class="button" (click)="startGame()">
-    Resume game
-  </button>
+  <ng-template #disabled
+    ><button class="button--not-active" disabled>
+      Click!
+    </button></ng-template
+  >
+  <div class="controls">
+    <button *ngIf="state === 'READY'" class="button" (click)="startGame()">
+      Start game
+    </button>
+    <button *ngIf="state === 'RUNNING'" class="button" (click)="pauseGame()">
+      Pause game
+    </button>
+    <button *ngIf="state === 'PAUSED'" class="button" (click)="startGame()">
+      Resume game
+    </button>
+    <button class="button" (click)="endGame()">
+      End game
+    </button>
+  </div>
 
   <span class="timer">00:00:{{ time }}</span>
 </div>
