@@ -50,29 +50,29 @@ export class GameComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 
-  startGame() {
+  startGame(): void {
     this.gameService.startGame();
     this.timerService.setInitialTime(this.time);
     this.timerService.resetTimer();
     this.timerService.startTimer();
   }
 
-  pauseGame() {
+  pauseGame(): void {
     this.gameService.pauseGame();
     this.timerService.pauseTimer();
   }
 
-  resumeGame() {
+  resumeGame(): void {
     this.gameService.startGame();
     this.timerService.startTimer();
   }
 
-  endGame() {
+  endGame(): void {
     this.gameService.endGame();
     this.timerService.stopTimer();
   }
 
-  onClick() {
+  onClick(): void {
     this.gameService.click();
   }
 }

@@ -24,7 +24,7 @@ export class ResultComponent implements OnInit {
     this.clicks = this.gameService.getClicks();
   }
 
-  newGame() {
+  newGame(): void {
     this.gameService.newGame();
     this.router.navigate(['/game']);
   }
