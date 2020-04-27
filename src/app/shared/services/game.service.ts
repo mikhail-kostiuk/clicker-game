@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { TimerService } from './timer.service';
 
 @Injectable({
   providedIn: 'root',
@@ -7,13 +8,13 @@ import { Subject } from 'rxjs';
 export class GameService {
   state: string = 'READY';
   clicks: number = 0;
-  time: number = 10;
+  time: number = 200;
   private stateSource = new Subject<string>();
   stateChange$ = this.stateSource.asObservable();
   private clicksSource = new Subject<number>();
   clicksChange$ = this.clicksSource.asObservable();
 
-  constructor() {}
+  constructor(private timerService: TimerService) {}
 
   statusChanged(state: string) {
     this.stateSource.next(state);
@@ -30,14 +31,24 @@ export class GameService {
   }
 
   startGame() {
+    this.timerService.setInitialTime(this.time);
+    this.timerService.resetTimer();
+    this.timerService.startTimer();
     this.statusChanged('RUNNING');
   }
 
   pauseGame() {
+    this.timerService.pauseTimer();
     this.statusChanged('PAUSED');
   }
 
+  resumeGame() {
+    this.timerService.startTimer();
+    this.statusChanged('RUNNING');
+  }
+
   endGame() {
+    this.timerService.stopTimer();
     this.statusChanged('FINISHED');
   }
 

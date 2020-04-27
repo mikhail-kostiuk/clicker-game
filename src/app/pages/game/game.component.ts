@@ -46,30 +46,23 @@ export class GameComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.gameService.endGame();
-    this.timerService.stopTimer();
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 
   startGame(): void {
     this.gameService.startGame();
-    this.timerService.setInitialTime(this.time);
-    this.timerService.resetTimer();
-    this.timerService.startTimer();
   }
 
   pauseGame(): void {
     this.gameService.pauseGame();
-    this.timerService.pauseTimer();
   }
 
   resumeGame(): void {
-    this.gameService.startGame();
-    this.timerService.startTimer();
+    this.gameService.resumeGame();
   }
 
   endGame(): void {
     this.gameService.endGame();
-    this.timerService.stopTimer();
   }
 
   onClick(): void {

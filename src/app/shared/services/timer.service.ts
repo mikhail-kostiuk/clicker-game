@@ -20,7 +20,6 @@ export class TimerService {
   startTimer(): any {
     this.timerId = setInterval(() => {
       if (this.currentTime > 0) {
-        console.log(this.currentTime);
         this.currentTime -= 0.1;
         this.timeChanged(this.currentTime);
       } else {
