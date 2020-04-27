@@ -22,7 +22,7 @@
     <button *ngIf="state === 'RUNNING'" class="button" (click)="pauseGame()">
       Pause game
     </button>
-    <button *ngIf="state === 'PAUSED'" class="button" (click)="startGame()">
+    <button *ngIf="state === 'PAUSED'" class="button" (click)="resumeGame()">
       Resume game
     </button>
     <button class="button" (click)="endGame()">
@@ -30,5 +30,5 @@
     </button>
   </div>
 
-  <span class="timer">00:00:{{ time }}</span>
+  <span class="timer">{{ time | formatTime }}</span>
 </div>
